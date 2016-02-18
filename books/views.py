@@ -1,13 +1,32 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+from django.views.generic import ListView, CreateView, UpdateView
 
 from books.models import Book
+from books.forms import BookForm
 # Create your views here.
+
+
+class BookLists(ListView):
+    model = Book
+
+    def get_queryset(self):
+        return super(BookLists, self).get_queryset()
+
+
+class CreateBook(CreateView):
+    form_class = BookForm
+    template_name = "books/create_book.html"
+
+    def form_valid(self, form):
+        book_obj = super(CreateBook, self).form_valid()
+
+        return redirect('books:user_books', username='ganesh')
 
 
 def search_form(request):
     return render(request, 'search_form.html')
-
 
 # def search(request):
 #     if 'q' in request.GET:

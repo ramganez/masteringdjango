@@ -1,9 +1,9 @@
 from django.db import models
-
 # Create your models here.
 
 
 from django.db import models
+
 
 class Publisher(models.Model):
     name = models.CharField(max_length=30)
@@ -15,6 +15,7 @@ class Publisher(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Author(models.Model):
     first_name = models.CharField(max_length=30)

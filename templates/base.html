@@ -5,7 +5,14 @@
 <body>
 
     <h1>My helpful timestamp site</h1>
-    {% block content %}{% endblock %}
+    <hr>
+    {% block content %} <a href="{% url  'accounts:signup' %}">Sigup</a> || <a
+            href="{% url  'accounts:signin' %}">Sigin</a> {% endblock %}
+
+    <hr>
+
+    {% block extra_footer %}
+    {% endblock %}
 
     {% block footer %}
     <p>Thanks for visiting my site.</p>

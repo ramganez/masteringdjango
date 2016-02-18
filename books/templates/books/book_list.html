@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            {% for book in object_list %}
+                {{ book.title }}
+            {% empty %}
+                <h5> No Books</h5>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_footer %}
+    <a href="#"> Sign Out </a> || <a href="{% url 'books:create_book' username='ganesh' %}"> Add Book </a>
+{% endblock %}

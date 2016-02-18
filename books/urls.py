@@ -17,22 +17,15 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from masteringdjango.views import (hello, current_datetime,
                                    hours_ahead)
-from books import views
+from books.views import *
 
 
 urlpatterns = [
+    url(r'^list/$', BookLists.as_view(), name='user_books'),
+    url(r'^create/$', CreateBook.as_view(), name='create_book'),
+    # url(r'^update/$', UpdateBook.as_view(),name='update_book'),
 
-    # accounts
-    url(r'^', include('accounts.urls', namespace="accounts")),
-
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^hello/$', hello),
-    url(r'^time/$', current_datetime),
-    url(r'^time/plus/(\d{1,2})/$', hours_ahead),
-
-    # url config for Book app
-    # username Matches alphanumeric and spl char(-._+@)
-    url(r'^(?P<username>[\w.@+-]+)/books/', include('books.urls', namespace='books')),
-
+    url(r'^search_form/$', search_form),
+    url(r'^search/$', search),
 ]
 
