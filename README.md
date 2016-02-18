@@ -1,0 +1,3 @@
+# masteringdjango
+learning purpose
+
