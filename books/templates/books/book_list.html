@@ -5,7 +5,7 @@
         <div>
 
             {% for book in object_list %}
-                {{ book.title }}
+                <a href="{% url 'books:update_book' username='ganesh' slug=book.slug %}" > {{ book.title }} </a>
             {% empty %}
                 <h5> No Books</h5>
             {% endfor %}

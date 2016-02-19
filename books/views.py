@@ -1,3 +1,5 @@
+import ipdb
+
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -20,9 +22,17 @@ class CreateBook(CreateView):
     template_name = "books/create_book.html"
 
     def form_valid(self, form):
-        book_obj = super(CreateBook, self).form_valid()
+        book_obj = form.save()
 
         return redirect('books:user_books', username='ganesh')
+
+
+class UpdateBook(UpdateView):
+    form_class = BookForm
+    template_name = "books/update_book.html"
+
+    def get_object(self):
+        return Book.objects.get(slug=self.kwargs['slug'])
 
 
 def search_form(request):

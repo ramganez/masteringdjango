@@ -23,7 +23,7 @@ from books.views import *
 urlpatterns = [
     url(r'^list/$', BookLists.as_view(), name='user_books'),
     url(r'^create/$', CreateBook.as_view(), name='create_book'),
-    # url(r'^update/$', UpdateBook.as_view(),name='update_book'),
+    url(r'^update/(?P<slug>[-\w]+)$', UpdateBook.as_view(), name='update_book'),
 
     url(r'^search_form/$', search_form),
     url(r'^search/$', search),

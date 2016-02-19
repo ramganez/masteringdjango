@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+import uuid
 
 
 class Migration(migrations.Migration):
@@ -25,6 +26,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=100)),
                 ('publication_date', models.DateField()),
+                ('slug', models.SlugField(default=uuid.uuid4, unique=True)),
                 ('authors', models.ManyToManyField(to='books.Author')),
             ],
         ),

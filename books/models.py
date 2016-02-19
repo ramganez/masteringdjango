@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 # Create your models here.
 
@@ -31,6 +33,7 @@ class Book(models.Model):
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher)
     publication_date = models.DateField()
+    slug = models.SlugField(unique=True, default=uuid.uuid4)
 
     def __str__(self):
         return self.title
