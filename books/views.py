@@ -14,7 +14,8 @@ class BookLists(ListView):
     model = Book
 
     def get_queryset(self):
-        return super(BookLists, self).get_queryset()
+        qs = Book.objects.filter(created_by=self.request.user)
+        return qs
 
 
 class CreateBook(CreateView):
@@ -23,8 +24,7 @@ class CreateBook(CreateView):
 
     def form_valid(self, form):
         book_obj = form.save()
-
-        return redirect('books:user_books', username='ganesh')
+        return redirect('books:user_books', username=self.request.user.username)
 
 
 class UpdateBook(UpdateView):
